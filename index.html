@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인천재능대학교 캠퍼스 웹</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>인천재능대학교 캠퍼스 웹</h1>
+  </header>
+
+  <section id="top-section">
+    <!-- 검색 섹션과 결과 섹션을 하나의 div로 묶음 -->
+    <div id="search-section">
+      <input type="text" id="room-search" placeholder="예: 604호">
+      <button onclick="performSearch()">검색</button>
+      
+      <!-- 검색 결과가 "검색창 바로 아래"에 나타나도록 이 자리에 둠 -->
+      <div id="search-results"></div>
+    </div>
+
+    <!-- 즐겨찾기 (예시) -->
+    <div id="favorites">
+      <h2>즐겨찾기</h2>
+      <ul id="favorites-list"></ul>
+    </div>
+  </section>
+
+  <main>
+    <!-- 캠퍼스 맵(예시) -->
+    <div class="map-container">
+      <img src="images/campus.png" alt="캠퍼스 지도" id="campus-map">
+      <!-- 건물 버튼 -->
+      <a href="it6.html" target="_blank" class="map-btn" style="top: 400px; left: 750px;">IT관</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 인천재능대학교. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

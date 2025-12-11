@@ -1,0 +1,175 @@
+/* 기본 스타일 */
+body {
+  font-family: Arial, sans-serif;
+  background: #f6dede;
+  padding: 20px;
+  margin: 0;
+}
+
+h1, h2, p {
+  margin: 0;
+}
+
+/* HEADER */
+header {
+  background-color: #0d0d0d;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+/* 푸터 */
+footer {
+  background-color: #333;
+  color: #fca7a7;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* 상단 영역: 검색창과 즐겨찾기 */
+#top-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* 검색창과 즐겨찾기 각각 */
+#search-section, #favorites {
+  width: 45%;
+}
+
+/* 검색 영역 내부 */
+#room-search {
+  padding: 5px;
+  font-size: 14px;
+  width: 70%; /* 입력창 너비 조정 */
+}
+#search-section button {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+/* 즐겨찾기 영역 */
+#favorites {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 30%;
+  font-size: 13px;
+}
+
+#favorites ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+#favorites ul li {
+  margin-bottom: 5px;
+}
+#favorites ul li a {
+  text-decoration: none;
+  color: #0077cc;
+}
+
+/* 메인 영역 */
+main {
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* 캠퍼스 지도 이미지 컨테이너 */
+.map-container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+/* 지도 이미지 */
+#campus-map {
+  width: 100%;
+  display: block;
+}
+
+/* 지도 위 버튼 (건물 선택 버튼) */
+.map-btn {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #555;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+}
+.map-btn:hover {
+  background-color: #ffdddd;
+}
+
+/* 검색 결과 영역 */
+#search-results {
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  display: inline-block;  /* 필요에 따라 inline-block 혹은 block */
+  width: 300px;
+  text-align: left;
+}
+.search-item {
+  margin: 5px 0;
+  display: block;
+  padding: 4px;
+  background: #eee;
+  text-decoration: none;
+  color: #151515;
+  border-radius: 3px;
+}
+.search-item:hover {
+  background: #ddd;
+}
+
+/* 미디어 쿼리 (반응형 디자인) */
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #top-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  #search-section, #favorites {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .map-container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  
+  /* 조정된 버튼 크기 및 여백 */
+  .map-btn {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  body {
+    font-size: 15px;
+    padding: 15px;
+  }
+  
+  #top-section {
+    flex-direction: row;
+  }
+  
+  .map-container {
+    max-width: 90%;
+  }
+}
