@@ -1,28 +1,25 @@
-<!-- it6.html -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT관 6층 강의실 안내</title>
-  <!-- 공통 스타일 -->
+  <title>IT관 층별 강의실 안내</title>
   <link rel="stylesheet" href="style.css">
-  <!-- 6층 전용 스타일 -->
-  <link rel="stylesheet" href="it6.css">
 </head>
 <body>
-  <h1>IT관 강의실 안내</h1>
+  <h1>IT관 층별 강의실 안내</h1>
 
   <!-- 학과 및 학년 선택 -->
   <div id="department-select">
-    <label for="departments">학과 선택:</label>
+    <label for="departments">학과 선택: </label>
     <select id="departments">
       <option value="">-- 학과를 선택하세요 --</option>
       <option value="컴퓨터공학과">컴퓨터공학과</option>
       <option value="정보보안학과">정보보안학과</option>
     </select>
 
-    <label for="grades">학년 선택:</label>
+    <br><br>
+
+    <label for="grades">학년 선택: </label>
     <select id="grades">
       <option value="">-- 학년을 선택하세요 --</option>
       <option value="1학년">1학년</option>
@@ -30,64 +27,56 @@
       <option value="3학년">3학년</option>
       <option value="4학년">4학년</option>
     </select>
+
     <button onclick="showTodaySchedule()">검색</button>
   </div>
 
-  <!-- 교수 선택 영역 -->
-  <div id="professor-select">
-    <h3>교수님 찾기</h3>
-    <select id="professor-name" onchange="findProfessorOffice()">
-      <option value="">-- 교수님을 선택하세요 --</option>
-      <option value="김지훈">김지훈</option>
-    </select>
-  </div>
-
-  <!-- 수업 검색 영역 -->
-  <div id="lecture-search">
-    <h3>수업 검색</h3>
-    <input type="text" id="lecture-name" placeholder="수업명을 입력하세요">
-    <button onclick="searchLecture()">검색</button>
-  </div>
-
-  <!-- 검색 결과 출력 -->
-  <div id="search-result"></div>
-
-  <!-- 6층 전용 맵 & 컨트롤 -->
-  <div class="floor-map-wrapper">
-    <div class="floor-control-card">
-      <h3>층 선택</h3>
-      <div class="floor-buttons">
-        <button onclick="changeFloor(1)">1층</button>
-        <button onclick="changeFloor(2)">2층</button>
-        <button onclick="changeFloor(3)">3층</button>
-        <button onclick="changeFloor(4)">4층</button>
-        <button onclick="changeFloor(5)">5층</button>
-        <button class="active-floor" onclick="changeFloor(6)">6층</button>
-      </div>
+  <!-- 층 이미지와 컨트롤 -->
+  <div class="floor-map-container">
+    <!-- 오른쪽 상단 층 버튼 -->
+    <div class="floor-buttons">
+      <button onclick="changeFloor(1)">1층</button>
+      <button onclick="changeFloor(2)">2층</button>
+      <button onclick="changeFloor(3)">3층</button>
+      <button onclick="changeFloor(4)">4층</button>
+      <button onclick="changeFloor(5)">5층</button>
+      <button onclick="changeFloor(6)">6층</button>
     </div>
 
-    <div class="floor-map-card">
-      <div class="floor-map">
-        <img id="floor-image" src="images/IT-6.png" alt="IT관 6층">
-        <!-- 강의실 버튼 -->
-        <button class="room-btn" style="top:175px; left:165px;" onclick="showRoomInfo('601호')">601호</button>
-        <button class="room-btn" style="top:175px; left:360px;" onclick="showRoomInfo('602호')">602호</button>
-        <button class="room-btn" style="top:175px; left:560px;" onclick="showRoomInfo('603호')">603호</button>
-        <button class="room-btn" style="top:355px; left:380px;" onclick="showRoomInfo('604호')">604호</button>
-        <button class="room-btn" style="top:355px; left:550px;" onclick="showRoomInfo('605호')">605호</button>
-        <!-- 교수실 버튼 -->
-        <button class="office-btn" style="top:355px; left:70px;" onclick="showProfessorOffice('김지훈')">김지훈 교수실</button>
-      </div>
+    <!-- 층별 이미지 -->
+    <div class="floor-map">
+      <img id="floor-image" src="images/IT-1.png" alt="IT관 6층" style="width: 800px;">
+      <!-- 강의실 버튼들 (1~6층, 층마다 최대 5개씩) -->
+      <!-- 예: 6층 -->
+      <button class="room-btn" data-floor="6" style="top: 175px; left: 165px;" onclick="showRoomInfo('601호')">601호</button>
+      <button class="room-btn" data-floor="6" style="top: 175px; left: 360px;" onclick="showRoomInfo('602호')">602호</button>
+      <button class="room-btn" data-floor="6" style="top: 175px; left: 560px;" onclick="showRoomInfo('603호')">603호</button>
+      <button class="room-btn" data-floor="6" style="top: 355px; left: 380px;" onclick="showRoomInfo('604호')">604호</button>
+      <button class="room-btn" data-floor="6" style="top: 355px; left: 550px;" onclick="showRoomInfo('605호')">605호</button>
+
+      <!-- 예: 3층 -->
+      <button class="room-btn" data-floor="3" style="top: 175px; left: 165px;" onclick="showRoomInfo('301호')">301호</button> 
+      <button class="room-btn" data-floor="3" style="top: 175px; left: 360px;" onclick="showRoomInfo('302호')">302호</button> 
+      <button class="room-btn" data-floor="3" style="top: 175px; left: 560px;" onclick="showRoomInfo('303호')">303호</button> 
+      <button class="room-btn" data-floor="3" style="top: 355px; left: 380px;" onclick="showRoomInfo('304호')">304호</button> 
+      <button class="room-btn" data-floor="3" style="top: 355px; left: 550px;" onclick="showRoomInfo('305호')">305호</button>
+
+      <button class="room-btn" data-floor="1" style="top: 220px; left: 195px;" onclick="showRoomInfo('101호')">101호</button> 
+      <button class="room-btn" data-floor="1" style="top: 220px; left: 295px;" onclick="showRoomInfo('102호')">102호</button> 
+      <button class="room-btn" data-floor="1" style="top: 220px; left: 425px;" onclick="showRoomInfo('103호')">103호</button> 
+      <button class="room-btn" data-floor="1" style="top: 385px; left: 175px;" onclick="showRoomInfo('104호')">104호</button> 
+      <button class="room-btn" data-floor="1" style="top: 385px; left: 340px;" onclick="showRoomInfo('105호')">105호</button>
+
+      <!-- ... 3층 버튼도 5개 -->
+
     </div>
   </div>
 
-  <!-- 상세 정보 출력 -->
+  <!-- 정보 출력 -->
   <div id="room-info"></div>
   <div id="today-location"></div>
 
-  <!-- 스크립트 -->
+  <!-- 외부 스크립트 -->
   <script src="script.js"></script>
 </body>
 </html>
-
-재능대학교
